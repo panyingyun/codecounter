@@ -7,12 +7,19 @@ import (
 )
 
 func main() {
-	fmt.Println("Code counter here!!!")
+	//统计后缀
+	suffixs := []string{"*.c", "*.cpp", "*.h", "*.go", "*.java", "*.cc"}
+
 	fs := fsch.NewFileSearch()
-	fs.Dir = "E:\\FocusVIew\\trunk\\src\\com\\lyk\\focusview_master"
-	fs.KeyWord = "*.java"
-	fl, _ := fs.SearchToList()
-	for _, fn := range fl {
-		fmt.Println(fn)
+	fs.Dir = "E:\\mygithub\\um\\trunk"
+	fs.SubDir = true
+	fs.CaseMind = false
+
+	for _, suffix := range suffixs {
+		fs.KeyWord = suffix
+		fl, _ := fs.SearchToList()
+		for _, fn := range fl {
+			fmt.Println(fn)
+		}
 	}
 }
